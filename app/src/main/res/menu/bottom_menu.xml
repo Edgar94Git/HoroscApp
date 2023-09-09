@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/horoscopeFragment"
+        android:title="@string/horoscope" />
+    <item
+        android:id="@+id/luckFragment"
+        android:title="@string/luck" />
+    <item
+        android:id="@+id/palmistryFragment"
+        android:title="@string/palmistry" />
+</menu>
