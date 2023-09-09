@@ -1,6 +1,5 @@
 package com.ereyes.horoscapp.ui.horoscope
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,14 +9,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.ereyes.horoscapp.R
 import com.ereyes.horoscapp.databinding.FragmentHoroscopeBinding
 import com.ereyes.horoscapp.ui.horoscope.adapter.HoroscopeAdapter
-import com.google.android.material.snackbar.Snackbar
+import com.ereyes.horoscapp.domain.model.HoroscopeInfo.*
+import com.ereyes.horoscapp.domain.model.HoroscopeModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -40,7 +38,24 @@ class HoroscopeFragment : Fragment() {
 
     private fun initRecyclerView() {
         horoscopeAdapter = HoroscopeAdapter(onItemSelected = { horoscopeInfo ->
-            Snackbar.make(binding.root, horoscopeInfo.name, Snackbar.LENGTH_LONG).show()
+            val type = when(horoscopeInfo){
+                Aquarius -> HoroscopeModel.Aquarius
+                Aries -> HoroscopeModel.Aries
+                Cancer -> HoroscopeModel.Cancer
+                Capricorn -> HoroscopeModel.Capricorn
+                Gemini -> HoroscopeModel.Gemini
+                Leo -> HoroscopeModel.Leo
+                Libra -> HoroscopeModel.Libra
+                Pisces -> HoroscopeModel.Pisces
+                Sagittarius -> HoroscopeModel.Sagittarius
+                Scorpio -> HoroscopeModel.Scorpio
+                Taurus -> HoroscopeModel.Taurus
+                Virgo -> HoroscopeModel.Virgo
+            }
+
+            findNavController().navigate(
+                HoroscopeFragmentDirections.actionHoroscopeFragmentToDetailHoroscopeActivity(type)
+            )
         })
         binding.rvHoroscopeList.apply {
             layoutManager = GridLayoutManager(context, 2)

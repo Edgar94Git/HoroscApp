@@ -9,7 +9,11 @@
         android:id="@+id/horoscopeFragment"
         android:name="com.ereyes.horoscapp.ui.horoscope.HoroscopeFragment"
         android:label="@string/horoscope"
-        tools:layout="@layout/fragment_horoscope" />
+        tools:layout="@layout/fragment_horoscope" >
+        <action
+            android:id="@+id/action_horoscopeFragment_to_detailHoroscopeActivity"
+            app:destination="@id/detailHoroscopeActivity" />
+    </fragment>
     <fragment
         android:id="@+id/palmistryFragment"
         android:name="com.ereyes.horoscapp.ui.palmistry.PalmistryFragment"
@@ -20,4 +24,13 @@
         android:name="com.ereyes.horoscapp.ui.luck.LuckFragment"
         android:label="@string/luck"
         tools:layout="@layout/fragment_luck" />
+    <activity
+        android:id="@+id/detailHoroscopeActivity"
+        android:name="com.ereyes.horoscapp.ui.detail.DetailHoroscopeActivity"
+        android:label="activity_detail_horoscope"
+        tools:layout="@layout/activity_detail_horoscope" >
+        <argument
+            android:name="type"
+            app:argType="com.ereyes.horoscapp.domain.model.HoroscopeModel" />
+    </activity>
 </navigation>
