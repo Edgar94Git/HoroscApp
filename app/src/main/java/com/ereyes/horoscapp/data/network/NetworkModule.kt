@@ -1,5 +1,6 @@
 package com.ereyes.horoscapp.data.network
 
+import com.ereyes.horoscapp.BuildConfig.BASE_URL
 import com.ereyes.horoscapp.data.RepositoryImpl
 import com.ereyes.horoscapp.domain.Repository
 import dagger.Module
@@ -10,7 +11,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.nio.file.attribute.AclEntry.Builder
 import javax.inject.Singleton
 
 /****
@@ -29,7 +29,7 @@ object NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit
             .Builder()
-            .baseUrl("https://newastro.vercel.app/")
+            .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
